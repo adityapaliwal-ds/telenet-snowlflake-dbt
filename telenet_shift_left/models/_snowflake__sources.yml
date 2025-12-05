@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: value_reporting_engine
+    database: PRESENTATION_PROD
+    schema: VALUE_REPORTING_ENGINE
+    tables:
+      - name: active_inst_base_customers_tln
+        identifier: ACTIVE_INST_BASE_CUSTOMERS_TLN
+        description: Active installed base customers (TLN)
+      - name: active_inst_base_households_tln
+        identifier: ACTIVE_INST_BASE_HOUSEHOLDS_TLN
+        description: Active installed base households (TLN)
+        
+  - name: product_offering_explorer
+    database: PRESENTATION_PROD
+    schema: PRODUCT_OFFERING_EXPLORER
+    tables:
+      - name: churn_products
+        identifier: CHURN_PRODUCTS
+        description: Product-level churn details
+      - name: sales_products
+        identifier: SALES_PRODUCTS
+        description: Product-level sales facts
+      - name: reporting_channel_hierarchy
+        identifier: REPORTING_CHANNEL_HIERARCHY
+        description: Hierarchy of reporting channels
+      - name: active_inst_base_stb_month
+        identifier: ACTIVE_INST_BASE_STB_MONTH
+        description: Active installed base set-top boxes by month
+    
+  - name: customer_profiler
+    database: PRESENTATION_PROD
+    schema: CUSTOMER_PROFILER
+    tables:
+      - name: lifestage_model_predictions
+        identifier: LIFESTAGE_MODEL_PREDICTIONS
+        description: Predictions from the lifestage model
+      - name: tln_behav_segm_model_predictions
+        identifier: TLN_BEHAV_SEGM_MODEL_PREDICTIONS
+        description: Predictions from the behavioral segmentation model for Telenet
