@@ -1,0 +1,41 @@
+[sqlfluff]
+verbose = 1
+nocolor = False
+dialect = snowflake
+templater = dbt
+rules = None
+exclude_rules = L011,L034
+output_line_length = 100
+large_file_skip_byte_limit = 0
+max_line_length = 10000
+
+[sqlfluff:templater:dbt]
+project_dir = ./telenet_shift_left
+profiles_dir = ~/.dbt
+
+[sqlfluff:indentation]
+tab_space_size = 4
+indent_unit = space
+indented_on_contents = False
+allow_implicit_indents = False
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:aliasing.table]
+aliasing = explicit
+
+[sqlfluff:layout:type:comma]
+line_position = leading
+
+[sqlfluff:rules:layout.select_targets]
+wildcard_policy = multiple
+
+[sqlfluff:rules:ambiguous.column_references]
+group_by_and_order_by_style = explicit
+
+[sqlfluff:layout:type:join_clause]
+line_position = alone
+
+[sqlfluff:layout:type:join_on_condition]
+keyword_line_position = leading
