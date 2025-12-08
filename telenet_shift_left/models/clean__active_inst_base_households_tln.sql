@@ -27,7 +27,7 @@ with base as (
             when dtv_mix in ('TV Flow', 'YUGO TV') then 'TV Flow'
             when dtv_mix = 'None' then 'Non-DTV'
             else 'TV Iconic'
-        end as dtv_types
+        end as cleaned_dtv_types
     from test_customers_exclusion
 )
 

@@ -6,8 +6,7 @@ with customers as (
 
 final as (
     select
-        substr(month_code, 1, 4) || '-' || substr(month_code, 5, 2) as month_code,
-        * exclude (month_code)
+        substr(month_code, 1, 4) || '-' || substr(month_code, 5, 2) as cleaned_month_code
     from customers
 )
 

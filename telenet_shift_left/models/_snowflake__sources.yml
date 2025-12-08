@@ -28,7 +28,16 @@ sources:
       - name: active_inst_base_stb_month
         identifier: ACTIVE_INST_BASE_STB_MONTH
         description: Active installed base set-top boxes by month
-    
+      - name: registered_net_adds_products
+        identifier: REGISTERED_NET_ADDS_PRODUCTS
+        description: Registered net additions by product
+      - name: d_mts_enrollment_product
+        identifier: D_MTS_ENROLLMENT_PRODUCT
+        description: MTS enrollment product details
+      - name: d_date
+        identifier: D_DATE
+        description: Date dimension table
+      
   - name: customer_profiler
     database: PRESENTATION_PROD
     schema: CUSTOMER_PROFILER

@@ -20,7 +20,7 @@ device_categories as (
             when device_product_type = 'DTVBC_APPEARTV' then 'DTV Broadcast Center'
             when device_product_type like 'AD%' then 'SIPADAN'
             when device_product_type = 'VIP7002W' then 'APOLLO'
-        end as device_categories
+        end as cleaned_device_categories
     from active_records
 )
 

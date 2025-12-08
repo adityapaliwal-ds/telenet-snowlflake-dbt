@@ -40,6 +40,7 @@ with base as (
 
 , product_mapping as (
     select
+        *,
         case
             ------------------------------------------------------------------
             -- COMBO PRODUCTS
@@ -136,24 +137,22 @@ with base as (
             -- DEFAULT: keep original name if nothing matches
             ----------------------------------------------------------
             else product
-        end as product
-        , * exclude (product)
-
+        end as cleaned_entertainment_product
     from exclude_migrations_feb_2025
 )
 
 , customer_id_mapping as (
     select
-        COALESCE(payer_nc_cust_nbr, payer_cust_nbr) as customer_number
-        , * exclude (payer_nc_cust_nbr, payer_cust_nbr)
+        *,
+        COALESCE(payer_nc_cust_nbr, payer_cust_nbr) as cleaned_customer_number
 
     from product_mapping
 )
 
 , customer_category_group_mapping as (
     select
-        case customer_category_group when 'BUS' then 'BUS' else 'RES' end as customer_category_group
-        , * exclude (customer_category_group)
+        *,
+        case customer_category_group when 'BUS' then 'BUS' else 'RES' end as cleaned_customer_category_group
 
     from customer_id_mapping
 )
