@@ -42,33 +42,33 @@ with nap as (
         emf.*,
         d.month as cancelled_month,
         case
-            ------------------------------------------------------------------
+            -- ----------------------------------------------------------------
             -- COMBO PRODUCTS
-            ------------------------------------------------------------------
-            -- when pp.product_desc in (
-            --     'Combo Netflix & Streamz', 'Combo Netflix & Streamz B2B'
-            -- ) then 'Combo Netflix & Streamz'
+            -- ----------------------------------------------------------------
+            when pp.product_desc in (
+                'Combo Netflix & Streamz', 'Combo Netflix & Streamz B2B'
+            ) then 'Combo Netflix & Streamz'
 
-            -- when pp.product_desc in (
-            --     'Combo Netflix & Streamz+', 'Combo Netflix & Streamz+ B2B'
-            -- ) then 'Combo Netflix & Streamz+'
+            when pp.product_desc in (
+                'Combo Netflix & Streamz+', 'Combo Netflix & Streamz+ B2B'
+            ) then 'Combo Netflix & Streamz+'
 
-            -- when pp.product_desc in (
-            --     'Combo Netflix & Streamz Premium', 'Combo Netflix & Streamz Premium B2B'
-            -- ) then 'Combo Netflix & Streamz Premium'
+            when pp.product_desc in (
+                'Combo Netflix & Streamz Premium', 'Combo Netflix & Streamz Premium B2B'
+            ) then 'Combo Netflix & Streamz Premium'
 
-            -- when pp.product_desc in (
-            --     'Combo Netflix & Streamz Premium+', 'Combo Netflix & Streamz Premium+ B2B'
-            -- ) then 'Combo Netflix & Streamz Premium+'
+            when pp.product_desc in (
+                'Combo Netflix & Streamz Premium+', 'Combo Netflix & Streamz Premium+ B2B'
+            ) then 'Combo Netflix & Streamz Premium+'
 
-            -- when pp.product_desc in (
-            --     'Combo Netflix & Play More', 'Combo Netflix & Play More B2B'
-            -- ) then 'Combo Netflix & Play More'
+            when pp.product_desc in (
+                'Combo Netflix & Play More', 'Combo Netflix & Play More B2B'
+            ) then 'Combo Netflix & Play More'
 
-            ----------------------------------------------------------
+            -- --------------------------------------------------------
             -- STREAMZ FAMILY  (groupable under "Streamz tiers")
             -- Prior ORIGIN migration names + post migration names
-            ----------------------------------------------------------
+            -- --------------------------------------------------------
             -- prior ORIGIN migration
             when
                 pp.product_desc in ('Streamz', 'Streamz B2B')
