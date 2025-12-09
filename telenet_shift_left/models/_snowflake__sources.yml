@@ -37,6 +37,12 @@ sources:
       - name: d_date
         identifier: D_DATE
         description: Date dimension table
+      - name: activation_lines
+        identifier: ACTIVATION_LINES
+        description: activation lines table
+      - name: deactivation_lines
+        identifier: DEACTIVATION_LINES
+        description: deactivation lines table
       
   - name: customer_profiler
     database: PRESENTATION_PROD
