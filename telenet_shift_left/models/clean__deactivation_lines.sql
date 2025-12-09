@@ -11,19 +11,12 @@ active_records as (
     where star_delete_time is null
 ),
 
-telenet_only as (
-    select
-        *
-    from active_records
-    where brand = 'Telenet'
-),
-
 customer_id_mapping as (
     select
         *,
         COALESCE(payer_nc_cust_nbr, payer_cust_nbr) as cleaned_customer_number
 
-    from telenet_only
+    from active_records
 )
 
 select 
