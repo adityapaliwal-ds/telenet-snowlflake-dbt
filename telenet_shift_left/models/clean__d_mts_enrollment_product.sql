@@ -45,33 +45,33 @@ with source as (
             -- prior ORIGIN migration
             when
                 pp.product_desc in ('Streamz', 'Streamz B2B')
-                and star_date_id < 20240101
+                -- and star_date_id < 20240101
                 then 'Streamz Premium'
 
             when
                 pp.product_desc in ('Streamz+', 'Streamz+ B2B')
-                and star_date_id < 20240101
+                -- and star_date_id < 20240101
                 then 'Streamz Premium+'
 
             when
                 pp.product_desc in ('Play More', 'Play More B2B')
-                and star_date_id < 20240101
+                -- and star_date_id < 20240101
                 then 'Play More'
 
             -- post ORIGIN migration
             when
                 pp.product_desc in ('Streamz Basic', 'Streamz Basic B2B')
-                and star_date_id >= 20240101
+                -- and star_date_id >= 20240101
                 then 'Streamz Basic'
 
             when
                 pp.product_desc in ('Streamz Premium', 'Streamz Premium B2B')
-                and star_date_id >= 20240101
+                -- and star_date_id >= 20240101
                 then 'Streamz Premium'
 
             when
                 pp.product_desc in ('Streamz Premium+', 'Streamz Premium+ B2B')
-                and star_date_id >= 20240101
+                -- and star_date_id >= 20240101
                 then 'Streamz Premium+'
 
             ----------------------------------------------------------
@@ -81,13 +81,13 @@ with source as (
             -- Before Oct 2024 the premium tier appears as "Disney+"
             when
                 pp.product_desc in ('Disney+', 'Disney+ B2B')
-                and star_date_id < 20241001
+                -- and star_date_id < 20241001
                 then 'Disney+ Premium'
 
             -- After rename, premium appears as "Disney+ Premium"
             when
                 pp.product_desc in ('Disney+ Premium', 'Disney+ Premium B2B')
-                and star_date_id >= 20241001
+                -- and star_date_id >= 20241001
                 then 'Disney+ Premium'
 
             -- Disney+ Standard – new tier from Sept 2025
