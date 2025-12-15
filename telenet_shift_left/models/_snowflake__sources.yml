@@ -43,6 +43,9 @@ sources:
       - name: deactivation_lines
         identifier: DEACTIVATION_LINES
         description: deactivation lines table
+      - name: cancel_lines
+        identifier: CANCEL_LINES
+        description: cancellation lines table
       
   - name: customer_profiler
     database: PRESENTATION_PROD
