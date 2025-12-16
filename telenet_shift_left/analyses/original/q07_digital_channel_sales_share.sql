@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------
---Q7 : What is the share of TV shop's sales in digital sales in Q1 of 2025?
+--Q7 : What is the share of TV shop's sales in the last 3 months
 ----------------------------------------------------------------------------------------
 with digital_sales as (
     -- Base dataset: all digital sales in Q1 2025
@@ -9,9 +9,11 @@ with digital_sales as (
     from {{ source('product_offering_explorer', 'sales_products') }} s
     inner join {{ source('product_offering_explorer', 'reporting_channel_hierarchy') }} rch
         on s.star_prim_rpt_chnnl_id = rch.star_rpt_channel_hierarchy_id
+    left join {{ source('product_offering_explorer', 'd_date') }} d
+        on s.star_date_id = d.star_date_id
     where
         s.star_delete_time is null
-        and s.sales_month between '2025-01' and '2025-03'
+        and d.month between '2025-09' and '2025-11'
         and s.product_type = 'Content Product'
         and rch.reporting_channel_lvl_1_desc = 'Digital'
         -- Exclude technical migrations (Feb-Mar 2025)
@@ -20,6 +22,7 @@ with digital_sales as (
             and rch.reporting_channel_lvl_4_desc in ('Telesales', 'Internal')
             and rch.reporting_channel_lvl_3_desc = 'Other'
         )
+        and s.product not ilike '%combo%'
 )
 
 , sales_aggregated as (
