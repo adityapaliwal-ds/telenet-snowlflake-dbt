@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------
---Q4 : What is the number of Play Sports' churn for the digital sales channel in the last 13 months?
+--Q4 : What is the number of Play Sports' churn for the digital sales channel in September 2025
 ----------------------------------------------------------------------------------------
 
 --NB :
@@ -13,8 +13,11 @@ select
 from {{ ref('clean__churn_products') }} c
 left join {{ ref('clean__reporting_channel_hierarchy') }} rch
     on c.star_prim_rpt_chnnl_id = rch.star_rpt_channel_hierarchy_id
+left join {{ ref('d_date') }} d
+    on c.star_date_id_churn = d.star_date_id
 where
-    c.churn_month between '2024-10' and '2025-11' --specify the period range here
+    d.month = '2025-09'
+    and rch.reporting_channel_lvl_1_desc = 'Digital'
     and c.product in ('Play Sports', 'Play Sports B2B') --to filter on a specific product using below products mapping
 group by all
 order by total_churn desc
