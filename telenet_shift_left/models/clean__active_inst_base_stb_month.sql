@@ -22,8 +22,15 @@ device_categories as (
             when device_product_type = 'VIP7002W' then 'APOLLO'
         end as cleaned_device_categories
     from active_records
+),
+
+final as (
+    select
+        *,
+        substr(star_snapshot_month_id, 1, 4) || '-' || substr(star_snapshot_month_id, 5, 2) as cleaned_star_snapshot_month_id
+    from device_categories
 )
 
 select 
     *
-from device_categories
+from final
