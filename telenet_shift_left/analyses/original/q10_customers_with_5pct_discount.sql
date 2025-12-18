@@ -12,7 +12,8 @@ where 1=1
   and star_delete_time is null
   and lower(cust_cust_cat_group_desc) <> 'tcc'
   -- and most_recent_snapshot = '1'--to provide most recent snapshot only
-  and month = '2025-10'--specify the month here for a month specific insight
+  -- and month = '2025-10'--specify the month here for a month specific insight
+  and month between '2025-09' and '2025-11'--specify the month here for a month specific insight
   and has_content = 'Y'
   and cont_mix like '%+%' --to filter customers with at least 2 entertainment products in content mix
 group by month

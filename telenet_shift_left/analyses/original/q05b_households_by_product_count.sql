@@ -14,7 +14,8 @@ with last_3_months as (
     where
         star_delete_time is null
         and lower(hh_cust_cat_group_desc) <> 'tcc'
-        and month between '2025-09' and '2025-11'
+        -- and month between '2025-09' and '2025-11'
+        and month = '2025-09'
 )
 
 , per_hh as (

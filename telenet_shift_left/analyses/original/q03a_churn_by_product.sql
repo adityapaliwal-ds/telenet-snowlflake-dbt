@@ -20,11 +20,13 @@ where
         and reporting_channel_lvl_4_desc in ('Telesales', 'Internal')
         and reporting_channel_lvl_3_desc = 'Other'
     )
-    and product in --specify the products here
-        (
-            'Streamz Basic', 'Streamz Basic B2B',
-            'Streamz Premium', 'Streamz Premium B2B',
-            'Streamz Premium+', 'Streamz Premium+ B2B'
-        ) 
+    -- and product in --specify the products here
+    --     (
+    --         'Streamz Basic', 'Streamz Basic B2B',
+    --         'Streamz Premium', 'Streamz Premium B2B',
+    --         'Streamz Premium+', 'Streamz Premium+ B2B'
+    --     ) 
+        and product ilike '%streamz%'
+        and product not ilike '%combo%'
 group by all
 order by 1

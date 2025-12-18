@@ -5,20 +5,20 @@
 select
     month,
     case
-        when streamz_basic_volume > 0 then 'Streamz Basic'
-        when streamz_volume > 0 then 'Streamz Premium'
-        when streamz_plus_volume > 0 then 'Streamz Premium+'
-        when play_more_volume > 0 then 'Play More'
-        when play_sports_volume > 0 then 'Play Sports'
+        -- when streamz_basic_volume > 0 then 'Streamz Basic'
+        -- when streamz_volume > 0 then 'Streamz Premium'
+        -- when streamz_plus_volume > 0 then 'Streamz Premium+'
+        -- when play_more_volume > 0 then 'Play More'
+        -- when play_sports_volume > 0 then 'Play Sports'
         when netflix_basic_volume > 0 then 'Netflix Basic'
         when netflix_standard_volume > 0 then 'Netflix Standard'
         when netflix_premium_volume > 0 then 'Netflix Premium'
-        when disney_plus_volume > 0 then 'Disney+ Standard & Premium'
+        -- when disney_plus_volume > 0 then 'Disney+ Standard & Premium'
     end as product,
     count(distinct customer_number) as nbr_customers
 from {{ ref('clean__active_inst_base_customers_tln') }}
 where 1=1
-  and month = '2025-11'
+  and month = '2025-10'
   and has_content = 'Y'
   and has_dtv = 'N' --non-DTV customers
 group by 1, 2

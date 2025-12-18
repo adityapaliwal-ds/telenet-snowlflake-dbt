@@ -15,17 +15,26 @@ with last_3_months as (
         month between '2025-09' and '2025-11'
 )
 
-, per_cust as (
-    select
-        customer_number
-        , max(nbr_products_in_month) as max_prodcuts_in_a_month_3m
-    from last_3_months
-    group by customer_number
-)
+-- , per_cust as (
+--     select
+--         customer_number
+--         , max(nbr_products_in_month) as max_prodcuts_in_a_month_3m
+--     from last_3_months
+--     group by customer_number
+-- )
+
+-- select
+--     count(*) as total_households
+--     , sum(case when max_prodcuts_in_a_month_3m > 1 then 1 else 0 end) as hh_more_than_1_product
+--     , sum(case when max_prodcuts_in_a_month_3m > 2 then 1 else 0 end) as hh_more_than_2_products
+--     , sum(case when max_prodcuts_in_a_month_3m > 3 then 1 else 0 end) as hh_more_than_3_products
+-- from per_cust
+
 
 select
-    count(*) as total_households
-    , sum(case when max_prodcuts_in_a_month_3m > 1 then 1 else 0 end) as hh_more_than_1_product
-    , sum(case when max_prodcuts_in_a_month_3m > 2 then 1 else 0 end) as hh_more_than_2_products
-    , sum(case when max_prodcuts_in_a_month_3m > 3 then 1 else 0 end) as hh_more_than_3_products
-from per_cust
+    month,
+    nbr_products_in_month,
+    count(*) as total_households,
+from last_3_months
+where month = '2025-09' and nbr_products_in_month > 1
+group by month, nbr_products_in_month

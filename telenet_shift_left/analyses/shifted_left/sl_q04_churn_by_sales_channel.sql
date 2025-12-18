@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------
---Q4 : What is the number of Play Sports' churn for the digital sales channel in September 2025
+--Q4 : What is the number of Play Sports' churn for the digital reporting channel in September 2025
 ----------------------------------------------------------------------------------------
 
 --NB :
@@ -8,7 +8,7 @@
 
 select
     rch.reporting_channel_lvl_1_desc as sales_channl
-    , -sum(c.nr_churn) as total_churn
+    , - sum(abs(c.nr_churn)) as total_churn
 
 from {{ ref('clean__churn_products') }} c
 left join {{ ref('clean__reporting_channel_hierarchy') }} rch
@@ -18,6 +18,8 @@ left join {{ ref('d_date') }} d
 where
     d.month = '2025-09'
     and rch.reporting_channel_lvl_1_desc = 'Digital'
-    and c.product in ('Play Sports', 'Play Sports B2B') --to filter on a specific product using below products mapping
+    -- and product_type = 'Content Product'
+    and c.cleaned_entertainment_product = 'Play Sports' --to filter on a specific product using below products mapping
+    -- and c.cleaned_entertainment_product not ilike '%combo%'
 group by all
 order by total_churn desc

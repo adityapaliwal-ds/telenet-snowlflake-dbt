@@ -12,11 +12,12 @@ left join {{ ref('d_date') }} d
 where
     d.month = '2025-09'
     and product_type = 'Content Product'
-    and cleaned_entertainment_product in --specify the products here (using cleaned names without B2B suffix)
-        (
-            'Streamz Basic', 'Streamz Basic B2B',
-            'Streamz Premium', 'Streamz Premium B2B',
-            'Streamz Premium+', 'Streamz Premium+ B2B'
-        ) 
+    and cleaned_entertainment_product ilike '%streamz%' --specify the products here (using cleaned names without B2B suffix)
+        -- (
+        --     'Streamz Basic', 'Streamz Basic B2B',
+        --     'Streamz Premium', 'Streamz Premium B2B',
+        --     'Streamz Premium+', 'Streamz Premium+ B2B'
+        -- ) 
 group by all
 order by 1
+
