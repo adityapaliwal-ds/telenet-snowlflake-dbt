@@ -24,11 +24,19 @@ device_categories as (
     from active_records
 ),
 
-final as (
+cleaned_month as (
     select
         *,
         substr(star_snapshot_month_id, 1, 4) || '-' || substr(star_snapshot_month_id, 5, 2) as cleaned_star_snapshot_month_id
     from device_categories
+)
+
+, final as (
+    select
+        *,
+        -- make a composite primary key using customer_number and cleaned_star_snapshot_month_id
+        customer_number || '_' || cleaned_star_snapshot_month_id as cleaned_composite_primary_key
+        from cleaned_month
 )
 
 select 
