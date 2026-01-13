@@ -31,7 +31,14 @@ with base as (
     from test_customers_exclusion
 )
 
+, final as (
+    select
+        *,
+        -- make a composite primary key using customer_number and month
+        customer_number || '_' || month as cleaned_composite_primary_key
+    from dtv_types
+)
+
 select
     *
-
-from dtv_types
+from final
